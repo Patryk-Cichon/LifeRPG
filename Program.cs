@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace LifeRPG
 {
     class Program
@@ -32,7 +33,7 @@ namespace LifeRPG
                 Console.WriteLine("Z - Zapisz grę");
                 Console.WriteLine("Inny klawisz - Wyjście z gry");
                 Console.Write("\nTwój wybór: ");
-
+                int czas = 0;
                 char x = Console.ReadKey().KeyChar;
                 Console.WriteLine(); // Przejście do nowej linii po wciśnięciu klawisza
 
@@ -43,10 +44,14 @@ namespace LifeRPG
                     dziala = false;
                     break;
                 }
-                
+                if (x == '1' || x == '2' || x == '3' || x == '4')
+                {
                 Console.WriteLine("Jak długo wykonywałeś zadanie? (w minutach):");
                 string czasWykonania = Console.ReadLine();
-                int czas = Convert.ToInt32(czasWykonania);
+                czas = Convert.ToInt32(czasWykonania);
+                }
+
+                
 
                 if (x == '1')
                 {
@@ -84,6 +89,10 @@ namespace LifeRPG
                     Console.WriteLine("\nNaciśnij dowolny klawisz, aby wrócić do menu...");
                     Console.ReadKey();
                 }
+
+            statyGracza.Poziom = ((statyGracza.Sprawność + statyGracza.Dyscyplina+ statyGracza.Inteligencja + statyGracza.Wiedza)/100)+1;
+
+                
 
 
                 Console.WriteLine("\nNaciśnij dowolny klawisz, aby kontynuować...");
