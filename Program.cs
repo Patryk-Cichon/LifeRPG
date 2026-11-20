@@ -38,7 +38,7 @@ namespace LifeRPG
                 Console.WriteLine(); // Przejście do nowej linii po wciśnięciu klawisza
 
                 // Jeśli gracz wcisnął coś spoza zakresu 1-4, kończymy pętlę
-                if (x != '1' && x != '2' && x != '3' && x != '4' && x != 'S' && x != 's'&& x!='z'&& x!='Z')
+                if (x != '1' && x != '2' && x != '3' && x != '4' && x != 'S' && x != 's'&& x!='z'&& x!='Z'&& x != 'u' && x != 'U')
                 {
                     Console.WriteLine("\nKoniec sesji. Do zobaczenia!");
                     dziala = false;
@@ -89,6 +89,29 @@ namespace LifeRPG
                     Console.WriteLine("\nNaciśnij dowolny klawisz, aby wrócić do menu...");
                     Console.ReadKey();
                 }
+                else if (x == 'u' || x == 'U')
+                {
+                    Console.WriteLine("\nCzy na pewno chcesz usunąć postać? (T/N)");
+                    char usuniecie = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+
+                    if (usuniecie == 'T' || usuniecie == 't')
+                    {
+                        if (File.Exists("save.txt"))
+                        {
+                        File.Delete("save.txt");
+                        }
+
+                        statyGracza = new Statystyki();
+                        Console.WriteLine("Usunięto postać i zresetowano statystyki.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Anulowano usuwanie.");
+                        }
+                        }
+               
+                }
 
             statyGracza.Poziom = ((statyGracza.Sprawność + statyGracza.Dyscyplina+ statyGracza.Inteligencja + statyGracza.Wiedza)/100)+1;
 
@@ -102,4 +125,3 @@ namespace LifeRPG
         }
     }
     
-}
